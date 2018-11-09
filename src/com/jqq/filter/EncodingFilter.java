@@ -12,11 +12,11 @@ import javax.servlet.ServletResponse;
 public class EncodingFilter implements Filter{
 	
 	public EncodingFilter(){
-		System.out.println("================EncodingFilter ¹¹ÔìÆ÷================");
+		System.out.println("================EncodingFilter æ„é€ å™¨================");
 	}
 	@Override
 	public void destroy() {
-		System.out.println("================EncodingFilter Ïú»Ù destroy================");
+		System.out.println("================EncodingFilter é”€æ¯ destroy================");
 	}
 
 	@Override
@@ -29,6 +29,6 @@ public class EncodingFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		System.out.println("================EncodingFilter ³õÊ¼»¯init================");
+		System.out.println("================EncodingFilter åˆå§‹åŒ–init================");
 	}
 }

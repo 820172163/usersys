@@ -10,21 +10,21 @@ import org.apache.log4j.Logger;
 import com.jqq.config.XmlConfig;
 
 /**
- * Êı¾İ¿âÁ¬½ÓÀà
+ * æ•°æ®åº“è¿æ¥ç±»
  * @author jqq
  *
  */
 public class DBConnect {
 	private static Logger log = Logger.getLogger(DBConnect.class);
-	public static String url = ""; //Êı¾İ¿âÁ¬½Óurl
-	public static String driver = ""; //Êı¾İ¿âÁ¬½ÓÇı¶¯
-	public static String username = ""; //Êı¾İ¿âÁ¬½ÓÓÃ»§Ãû
-	public static String password = ""; //Êı¾İ¿âÁ¬½ÓÃÜÂë
+	public static String url = ""; //æ•°æ®åº“è¿æ¥url
+	public static String driver = ""; //æ•°æ®åº“è¿æ¥é©±åŠ¨
+	public static String username = ""; //æ•°æ®åº“è¿æ¥ç”¨æˆ·å
+	public static String password = ""; //æ•°æ®åº“è¿æ¥å¯†ç 
 	public static Connection conn = null;
 	public static PreparedStatement pstmt = null;
 	public static ResultSet rs = null;
 	
-	//¶ÁÈ¡ÏµÍ³Êı¾İ¿âÅäÖÃ
+	//è¯»å–ç³»ç»Ÿæ•°æ®åº“é…ç½®
 	static{
 		XmlConfig conf = new XmlConfig();
 		url = conf.getValue("mysql", "url");
@@ -34,63 +34,63 @@ public class DBConnect {
 	}
 	
 	/**
-	 * ³õÊ¼»¯Êı¾İ¿âÁ¬½Ó
+	 * åˆå§‹åŒ–æ•°æ®åº“è¿æ¥
 	 */
 	public static void init(){
 		try{
 			if(conn == null){
-				log.debug("================×¢²áJDBCÇı¶¯================");
+				log.debug("================æ³¨å†ŒJDBCé©±åŠ¨================");
 				Class.forName(driver);
-				log.debug("================´ò¿ªÊı¾İ¿âÁ¬½Ó================");
+				log.debug("================æ‰“å¼€æ•°æ®åº“è¿æ¥================");
 				conn = DriverManager.getConnection(url, username, password);
 			}
 		}catch(Exception e){
-			log.debug("================[DBConnect] Êı¾İ¿âÇı¶¯init³õÊ¼»¯Ê§°Ü================");
+			log.debug("================[DBConnect] æ•°æ®åº“é©±åŠ¨initåˆå§‹åŒ–å¤±è´¥================");
 			e.printStackTrace();
-			System.out.println("================[DBConnect] Êı¾İ¿âÇı¶¯init³õÊ¼»¯Ê§°Ü================");
+			System.out.println("================[DBConnect] æ•°æ®åº“é©±åŠ¨initåˆå§‹åŒ–å¤±è´¥================");
 		}finally{
 			
 		}
 	}
 	/**
-	 * ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+	 * å…³é—­æ•°æ®åº“è¿æ¥
 	 */
 	public static void close(){
 		try{
 			if(conn != null){
-				log.debug("================¹Ø±ÕÊı¾İ¿âÁ¬½Ó================");
+				log.debug("================å…³é—­æ•°æ®åº“è¿æ¥================");
 				conn.close();
 				conn = null;
 			}
 		}catch(Exception e){
-			log.debug("================[DBConnect] Êı¾İ¿âÁ¬½Óclose¹Ø±ÕÊ§°Ü================");
+			log.debug("================[DBConnect] æ•°æ®åº“è¿æ¥closeå…³é—­å¤±è´¥================");
 			e.printStackTrace();
-			System.out.println("================[DBConnect] Êı¾İ¿âÁ¬½Óclose¹Ø±ÕÊ§°Ü================");
+			System.out.println("================[DBConnect] æ•°æ®åº“è¿æ¥closeå…³é—­å¤±è´¥================");
 		}finally{
 			
 		}
 	}
 	/**
-	 * ¸ù¾İsqlÓï¾ä²éÑ¯Êı¾İ
+	 * æ ¹æ®sqlè¯­å¥æŸ¥è¯¢æ•°æ®
 	 * @param sql
 	 * @return
 	 */
 	public static ResultSet selectSql(String sql){
 		try{
 			pstmt = conn.prepareStatement(sql);
-			log.debug("================[selectSql]²éÑ¯sql:" + sql);
+			log.debug("================[selectSql]æŸ¥è¯¢sql:" + sql);
 			rs = pstmt.executeQuery();
 		}catch(Exception e){
-			log.debug("================[DBConnect] Êı¾İ¿âÇı¶¯init³õÊ¼»¯Ê§°Ü================");
+			log.debug("================[DBConnect] æ•°æ®åº“é©±åŠ¨initåˆå§‹åŒ–å¤±è´¥================");
 			e.printStackTrace();
-			System.out.println("================[DBConnect] Êı¾İ¿âÇı¶¯init³õÊ¼»¯Ê§°Ü================");
+			System.out.println("================[DBConnect] æ•°æ®åº“é©±åŠ¨initåˆå§‹åŒ–å¤±è´¥================");
 		}finally{
 			
 		}
 		return rs;
 	}
 	/**
-	 * ¸ù¾İsqlÖ´ĞĞĞÂÔö¡¢ĞŞ¸Ä»òÉ¾³ı
+	 * æ ¹æ®sqlæ‰§è¡Œæ–°å¢ã€ä¿®æ”¹æˆ–åˆ é™¤
 	 * @param sql
 	 * @return
 	 */
@@ -98,14 +98,14 @@ public class DBConnect {
 		boolean result = false;
 		try{
 			pstmt = conn.prepareStatement(sql);
-			log.debug("================[excuteSql]Ö´ĞĞsql:" + sql);
+			log.debug("================[excuteSql]æ‰§è¡Œsql:" + sql);
 			int flag = pstmt.executeUpdate();
-			log.debug("================[excuteSql]Êı¾İ¸üĞÂĞĞÊı:" + flag);
+			log.debug("================[excuteSql]æ•°æ®æ›´æ–°è¡Œæ•°:" + flag);
 			result = true;
 		}catch(Exception e){
-			log.debug("================[DBConnect] excuteSqlÖ´ĞĞsqlÒì³£================");
+			log.debug("================[DBConnect] excuteSqlæ‰§è¡Œsqlå¼‚å¸¸================");
 			e.printStackTrace();
-			System.out.println("================[DBConnect] excuteSqlÖ´ĞĞsqlÒì³£================");
+			System.out.println("================[DBConnect] excuteSqlæ‰§è¡Œsqlå¼‚å¸¸================");
 		}finally{
 			
 		}

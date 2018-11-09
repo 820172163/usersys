@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class DeployServer {
 	private static Logger log = Logger.getLogger(DeployServer.class);
-	private String serverType; //²¿Êğ·şÎñÀàĞÍ
+	private String serverType; //éƒ¨ç½²æœåŠ¡ç±»å‹
 	public static final String TOMCAT = "tomcat";
 	public static final String JBOSS = "jboss";
 	public static final String WEBLOGIC = "weblogic";
@@ -30,7 +30,7 @@ public class DeployServer {
 		}
 	}
 	/**
-	 * »ñÈ¡·¢²¼ÈİÆ÷ÀàĞÍÃû³Æ
+	 * è·å–å‘å¸ƒå®¹å™¨ç±»å‹åç§°
 	 * @return
 	 */
 	public static String getDeployServerType(){
@@ -49,7 +49,7 @@ public class DeployServer {
 		return deployServer.websphereFlag;
 	}
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇÖ¸¶¨·¢²¼ÈİÆ÷ÀàĞÍ
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯æŒ‡å®šå‘å¸ƒå®¹å™¨ç±»å‹
 	 * @param className
 	 * @return
 	 */
@@ -72,7 +72,7 @@ public class DeployServer {
 		return result;
 	}
 	/**
-	 * ÊÇ·ñtomcat·¢²¼ÈİÆ÷
+	 * æ˜¯å¦tomcatå‘å¸ƒå®¹å™¨
 	 * @return
 	 */
 	private boolean _isTomcat(){
@@ -83,7 +83,7 @@ public class DeployServer {
 		return flag;
 	}
 	/**
-	 * ÊÇ·ñjboss·¢²¼ÈİÆ÷
+	 * æ˜¯å¦jbosså‘å¸ƒå®¹å™¨
 	 * @return
 	 */
 	private boolean _isJboss(){
@@ -91,7 +91,7 @@ public class DeployServer {
 		return flag;
 	}
 	/**
-	 * ÊÇ·ñweblogic·¢²¼ÈİÆ÷
+	 * æ˜¯å¦weblogicå‘å¸ƒå®¹å™¨
 	 * @return
 	 */
 	private boolean _isWeblogic(){
@@ -99,7 +99,7 @@ public class DeployServer {
 		return flag;
 	}
 	/**
-	 * ÊÇ·ñwebsphere·¢²¼ÈİÆ÷
+	 * æ˜¯å¦websphereå‘å¸ƒå®¹å™¨
 	 * @return
 	 */
 	private boolean _isWebSphere(){

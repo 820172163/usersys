@@ -12,9 +12,9 @@ import com.jqq.util.DeployServer;
 
 public class XmlConfig {
 	private static Logger log = Logger.getLogger(XmlConfig.class);
-	//xmlÎÄ¼şÂ·¾¶
+	//xmlæ–‡ä»¶è·¯å¾„
 	private static String xmlPath = System.getProperty("user.dir") + "/classes/com/jqq/config/sysconfig.xml";
-	//²»Í¬ÀàĞÍ·¢²¼ÈİÆ÷£¬ÎÄ¼ş¾ø¶ÔÂ·¾¶´¦Àí²»Í¬
+	//ä¸åŒç±»å‹å‘å¸ƒå®¹å™¨ï¼Œæ–‡ä»¶ç»å¯¹è·¯å¾„å¤„ç†ä¸åŒ
 	static{
 		if(DeployServer.isWeblogic() || DeployServer.isWebSphere()){
 			xmlPath = System.getProperty("user.dir") + "/classes/com/jqq/config/sysconfig.xml";
@@ -22,16 +22,16 @@ public class XmlConfig {
 			xmlPath = Class.class.getClass().getResource("/").getPath() + "com/jqq/config/sysconfig.xml";
 		}
 	}
-	//xmlÎÄ¼ş¶ÔÏó
+	//xmlæ–‡ä»¶å¯¹è±¡
 	private Document document;
-	private static final Object lock = new Object(); //Ïß³Ì¼ÓËø
+	private static final Object lock = new Object(); //çº¿ç¨‹åŠ é”
 	/**
-	 * ¹¹ÔìÆ÷
+	 * æ„é€ å™¨
 	 */
 	public XmlConfig(){
 		synchronized(lock){
 			if(document == null){
-				//Èç¹ûÊ×´Î¶ÁÈ¡Ã»ÓĞ³õÊ¼»¯£¬¶ÁÈ¡xmlÅäÖÃÎÄ¼ş³õÊ¼»¯
+				//å¦‚æœé¦–æ¬¡è¯»å–æ²¡æœ‰åˆå§‹åŒ–ï¼Œè¯»å–xmlé…ç½®æ–‡ä»¶åˆå§‹åŒ–
 				SAXBuilder builder = new SAXBuilder();
 				try {
 					document = builder.build(xmlPath);
@@ -41,12 +41,12 @@ public class XmlConfig {
 					e.printStackTrace();
 				}
 			}else{
-				//ÒÑ¾­³õÊ¼»¯ºóÎŞĞèÔÙ´Î³õÊ¼»¯
+				//å·²ç»åˆå§‹åŒ–åæ— éœ€å†æ¬¡åˆå§‹åŒ–
 			}
 		}
 	}
 	/**
-	 * »ñÈ¡Ö¸¶¨½ÚµãÏÂcansuzhi
+	 * è·å–æŒ‡å®šèŠ‚ç‚¹ä¸‹cansuzhi
 	 * @param rootName
 	 * @param nodeName
 	 * @return
@@ -54,12 +54,12 @@ public class XmlConfig {
 	public String getValue(String rootName, String nodeName){
 		String result = "";
 		try{
-			//½ÚµãÃû³Æ²»¿ÉÒÔÎª¿Õ
+			//èŠ‚ç‚¹åç§°ä¸å¯ä»¥ä¸ºç©º
 			if(rootName!=null && !"".equals(rootName.trim()) && nodeName!=null && !"".equals(nodeName.trim())){
 				Element rootElement = document.getRootElement();
 				String[] rootArr = rootName.split(",");
 				Element targetElement = null;
-				//´ÓÖ¸¶¨½Úµã¿ªÊ¼±éÀú£¬»ñÈ¡µ½×ÓÔªËØ
+				//ä»æŒ‡å®šèŠ‚ç‚¹å¼€å§‹éå†ï¼Œè·å–åˆ°å­å…ƒç´ 
 				for(int i=0; i<rootArr.length; i++){
 					if(targetElement != null){
 						targetElement = targetElement.getChild(rootArr[i]);
@@ -73,9 +73,9 @@ public class XmlConfig {
 						Element tempElement = null;
 						for(int j=0; j<targetList.size(); j++){
 							tempElement = targetList.get(j);
-							//Æ¥Åäµ½¶ÔÓ¦paramÃû³Æ
+							//åŒ¹é…åˆ°å¯¹åº”paramåç§°
 							if(nodeName.equals(tempElement.getAttributeValue("key"))){
-								//»ñÈ¡¶ÔÓ¦paramÅäÖÃµÄvalueÖµ
+								//è·å–å¯¹åº”paramé…ç½®çš„valueå€¼
 								result = tempElement.getAttributeValue("value");
 							}
 						}

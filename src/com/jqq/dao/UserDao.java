@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.jqq.entity.SysUser;
 /**
- * 系统用户接口
+ * 绯荤粺鐢ㄦ埛鎺ュ彛
  * @author jqq
  *
  */
 public interface UserDao {
-	public boolean login(String username, String password); //用户登录
-	public boolean register(SysUser user); //用户注册
-	public List<SysUser> getSysUser(); //获取用户数据集合
-	public boolean deleteUser(Long userId); //根据用户id删除用户数据
+	public boolean login(String username, String password); //鐢ㄦ埛鐧诲綍
+	public boolean register(SysUser user); //鐢ㄦ埛娉ㄥ唽
+	public List<SysUser> getSysUser(); //鑾峰彇鐢ㄦ埛鏁版嵁闆嗗悎
+	public boolean deleteUser(Long userId); //鏍规嵁鐢ㄦ埛id鍒犻櫎鐢ㄦ埛鏁版嵁
 }
