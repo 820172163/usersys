@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!-- log4j日志配置 -->
+	<context-param>
+		<param-name>log4jConfig</param-name>
+		<param-value>/WEB-INF/com/jqq/config/log4j.properties</param-value>
+	</context-param>
+	<!-- 编码格式 过滤器配置 -->
+	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>com.jqq.filter.EncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern> <!--*即为过滤所有-->
+	</filter-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,14 @@
+在读取配置sysconfig.xml时候：数据库的Url，第一次设置的内容如下：
+jdbc:mysql://localhost:3306/photo?useUnicode=true&characterEncoding=UTF-8，注意中间那个“&”，
+在xml中这个是读不出的，正确写法将“&”转义“&amp;”：
+jdbc:mysql://localhost:3306/photo?useUnicode=true&amp;characterEncoding=UTF-8
+分析：
+有时候在使用xml作为配置文件的时候，应该要使用xml的编码规则来进行适当的设置。
+下面给出xml中一些特殊符号的编码转换：
+
+ &lt;	 <	 小于号
+ &gt;	 >	 大于号
+ &amp;	 &	 and字符
+ &apos;	 '	 单引号
+ &quot;	 "	 双引号
+=========================================================================================

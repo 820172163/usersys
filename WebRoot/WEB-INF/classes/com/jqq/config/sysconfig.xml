@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jqq>
+	<!-- mysql数据源配置 -->
+	<mysql>
+		<param key="url" value="jdbc:mysql://localhost:3306/jqq?useunicuee=true&amp;characterEncoding=utf8" />
+		<param key="driver" value="com.mysql.jdbc.Driver" />
+		<param key="username" value="jqq" />
+		<param key="password" value="123123" />
+	</mysql>
+	
+</jqq>
